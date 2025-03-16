@@ -69,8 +69,8 @@ $CallingHome['InterlinkFile']                        = "/xlxd/xlxd.interlink";  
   this makes updating dashboard from git a little bit easier
 */
 
-if (file_exists("../config.inc.php")) {
-  include ("../config.inc.php");
+if (file_exists(__DIR__."/../config.inc.php")) {
+  include (__DIR__."/../config.inc.php");
 }
 
 ?>
