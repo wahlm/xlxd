@@ -31,6 +31,7 @@
 #include "ctranscoder.h"
 #include "cysfnodedirfile.h"
 #include "cysfnodedirhttp.h"
+#include <systemd/sd-daemon.h>
 
 #include <chrono>
 
@@ -135,6 +136,7 @@ bool CReflector::Start(void)
 #ifdef JSON_MONITOR
         m_JsonReportThread = new std::thread(CReflector::JsonReportThread, this);
 #endif
+        sd_notify(0, "READY=1");
     }
     else
     {

@@ -1,4 +1,4 @@
-ALL_CXXFLAGS=-std=c++11 -pthread $(CXXFLAGS)
+ALL_CXXFLAGS=-std=c++11 -pthread -lsystemd $(CXXFLAGS)
 SOURCES=$(wildcard *.cpp)
 OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=xlxd
