@@ -5,7 +5,8 @@ Maintainer: Mark Wahl <MarkWahl@gmx.de>
 Rules-Requires-Root: no
 Build-Depends:
  debhelper-compat (= 13),
- libsystemd-dev
+ libsystemd-dev,
+ libftd2xx
 Standards-Version: 4.6.2
 Homepage: https://github.com/LX3JL/xlxd
 #Vcs-Browser: https://salsa.debian.org/debian/xlxd
@@ -18,3 +19,11 @@ Depends:
  ${misc:Depends},
 Description: XLX Multiprotocol Gateway Reflector Server
  The XLX Multiprotocol Gateway Reflector Server is part of the software system for the D-Star Network.
+
+Package: ambed
+Architecture: any
+Depends:
+ ${shlibs:Depends},
+ ${misc:Depends},
+Description: AMBE Transcoding Server
+ The AMBE Transcoding Server is part of the software system for the D-Star Network.

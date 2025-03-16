@@ -16,7 +16,15 @@ export DH_VERBOSE = 1
 
 
 %:
-	dh $@ --sourcedirectory=src
+	dh $@
+
+override_dh_auto_install:
+	$(MAKE) -e DESTDIR=../debian/tmp/ -e PREFIX=usr/ install
+
+#	dh_auto_install --buildsystem=make
+
+#override_dh_clean:
+#	 clean
 
 
 # dh_make generated override targets.

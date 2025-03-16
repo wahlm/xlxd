@@ -7,15 +7,17 @@ EXECUTABLE=xlxd
 # directory variables - https://www.gnu.org/software/make/manual/html_node/Directory-Variables.html
 # DESTDIR - https://www.gnu.org/software/make/manual/html_node/DESTDIR.html
 # ComamndVariables - #https://www.gnu.org/software/make/manual/html_node/Command-Variables.html
-prefix=/usr/local
-exec_prefix=$(prefix)
+PREFIX?=/usr/local
+EXEC_PREFIX?=$(PREFIX)
 # by default install under /xlxd/ - it should be $(exec_dir)/sbin
-sbin_dir=/xlxd
-# by default install config under /xlxd/ - it should be $(prefix)/etc
-sysconf_dir=/xlxd
-INSTALL=install
-INSTALL_PROGRAM=$(INSTALL)
-INSTALL_DATA=${INSTALL} -m 644
+#sbin_dir=/xlxd
+SBIN_DIR?=$(EXEC_PREFIX)sbin
+# by default install config under /xlxd/ - it should be $(PREFIX)/etc
+#SYSCONF_DIR=/xlxd
+SYSCONF_DIR?=etc/xlxd
+INSTALL?=install
+INSTALL_PROGRAM?=$(INSTALL)
+INSTALL_DATA?=${INSTALL} -m 644
 
 all: $(OBJECTS) $(EXECUTABLE)
 
@@ -31,21 +33,21 @@ clean:
 
 .PHONY: install
 install:
-	$(INSTALL) -d $(DESTDIR)$(sbin_dir)
-	$(INSTALL_PROGRAM) $(EXECUTABLE) $(DESTDIR)$(sbin_dir)/$(EXECUTABLE)
-	$(INSTALL) -d $(DESTDIR)$(sysconf_dir)
-	[ -f $(DESTDIR)$(sysconf_dir)/xlxd.blacklist ] && \
-		$(INSTALL_DATA) ../config/xlxd.blacklist  $(DESTDIR)$(sysconf_dir)/xlxd.blacklist.sample || \
-		$(INSTALL_DATA) ../config/xlxd.blacklist  $(DESTDIR)$(sysconf_dir)/xlxd.blacklist
-	[ -f $(DESTDIR)$(sysconf_dir)/xlxd.whitelist ] && \
-		$(INSTALL_DATA) ../config/xlxd.whitelist  $(DESTDIR)$(sysconf_dir)/xlxd.whitelist.sample || \
-		$(INSTALL_DATA) ../config/xlxd.whitelist  $(DESTDIR)$(sysconf_dir)/xlxd.whitelist
-	[ -f $(DESTDIR)$(sysconf_dir)/xlxd.interlink ] && \
-		$(INSTALL_DATA) ../config/xlxd.interlink  $(DESTDIR)$(sysconf_dir)/xlxd.interlink.sample || \
-		$(INSTALL_DATA) ../config/xlxd.interlink  $(DESTDIR)$(sysconf_dir)/xlxd.interlink
-	[ -f $(DESTDIR)$(sysconf_dir)/xlxd.terminal ] && \
-		$(INSTALL_DATA) ../config/xlxd.terminal  $(DESTDIR)$(sysconf_dir)/xlxd.terminal.sample || \
-		$(INSTALL_DATA) ../config/xlxd.terminal  $(DESTDIR)$(sysconf_dir)/xlxd.terminal
-	[ -f $(DESTDIR)$(sysconf_dir)/xlxd.transcoder ] && \
-		$(INSTALL_DATA) ../config/xlxd.transcoder  $(DESTDIR)$(sysconf_dir)/xlxd.transcoder.sample || \
-		$(INSTALL_DATA) ../config/xlxd.transcoder  $(DESTDIR)$(sysconf_dir)/xlxd.transcoder
+	$(INSTALL) -d $(DESTDIR)$(SBIN_DIR)
+	$(INSTALL_PROGRAM) $(EXECUTABLE) $(DESTDIR)$(SBIN_DIR)/$(EXECUTABLE)
+	$(INSTALL) -d $(DESTDIR)$(SYSCONF_DIR)
+	[ -f $(DESTDIR)$(SYSCONF_DIR)/xlxd.blacklist ] && \
+		$(INSTALL_DATA) ../config/xlxd.blacklist  $(DESTDIR)$(SYSCONF_DIR)/xlxd.blacklist.sample || \
+		$(INSTALL_DATA) ../config/xlxd.blacklist  $(DESTDIR)$(SYSCONF_DIR)/xlxd.blacklist
+	[ -f $(DESTDIR)$(SYSCONF_DIR)/xlxd.whitelist ] && \
+		$(INSTALL_DATA) ../config/xlxd.whitelist  $(DESTDIR)$(SYSCONF_DIR)/xlxd.whitelist.sample || \
+		$(INSTALL_DATA) ../config/xlxd.whitelist  $(DESTDIR)$(SYSCONF_DIR)/xlxd.whitelist
+	[ -f $(DESTDIR)$(SYSCONF_DIR)/xlxd.interlink ] && \
+		$(INSTALL_DATA) ../config/xlxd.interlink  $(DESTDIR)$(SYSCONF_DIR)/xlxd.interlink.sample || \
+		$(INSTALL_DATA) ../config/xlxd.interlink  $(DESTDIR)$(SYSCONF_DIR)/xlxd.interlink
+	[ -f $(DESTDIR)$(SYSCONF_DIR)/xlxd.terminal ] && \
+		$(INSTALL_DATA) ../config/xlxd.terminal  $(DESTDIR)$(SYSCONF_DIR)/xlxd.terminal.sample || \
+		$(INSTALL_DATA) ../config/xlxd.terminal  $(DESTDIR)$(SYSCONF_DIR)/xlxd.terminal
+	[ -f $(DESTDIR)$(SYSCONF_DIR)/xlxd.transcoder ] && \
+		$(INSTALL_DATA) ../config/xlxd.transcoder  $(DESTDIR)$(SYSCONF_DIR)/xlxd.transcoder.sample || \
+		$(INSTALL_DATA) ../config/xlxd.transcoder  $(DESTDIR)$(SYSCONF_DIR)/xlxd.transcoder
