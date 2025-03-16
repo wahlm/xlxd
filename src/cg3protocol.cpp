@@ -102,12 +102,8 @@ bool CG3Protocol::Init(void)
 
 void CG3Protocol::Close(void)
 {
-<<<<<<< HEAD
-    if (m_pPresenceThread)
-=======
     m_bStopThread = true;
     if (m_pPresenceThread != NULL)
->>>>>>> anonymouspage/improve-shutdown-behavior
     {
         m_pPresenceThread->join();
         delete m_pPresenceThread;
