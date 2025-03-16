@@ -1,4 +1,4 @@
-ALL_CXXFLAGS=-std=c++11 -pthread -lsystemd $(CXXFLAGS)
+ALL_CXXFLAGS=-std=c++11 -pthread $(CXXFLAGS)
 SOURCES=$(wildcard *.cpp)
 OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=xlxd
@@ -20,7 +20,7 @@ INSTALL_DATA=${INSTALL} -m 644
 all: $(OBJECTS) $(EXECUTABLE)
 
 $(EXECUTABLE): $(OBJECTS)
-	$(CXX) $(CPPFLAGS) $(ALL_CXXFLAGS) $(OBJECTS) -o $@
+	$(CXX) $(CPPFLAGS) $(ALL_CXXFLAGS) $(OBJECTS) -lsystemd -o $@
 
 .cpp.o: %.h
 	$(CXX) -c $(CPPFLAGS) $(ALL_CXXFLAGS) $<
