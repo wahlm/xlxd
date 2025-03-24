@@ -1,5 +1,5 @@
 Source: xlxd
-Section: unknown
+Section: hamradio
 Priority: optional
 Maintainer: Mark Wahl <MarkWahl@gmx.de>
 Rules-Requires-Root: no
@@ -18,12 +18,33 @@ Depends:
  ${shlibs:Depends},
  ${misc:Depends},
 Description: XLX Multiprotocol Gateway Reflector Server
- The XLX Multiprotocol Gateway Reflector Server is part of the software system for the D-Star Network.
+ The XLX Multiprotocol Gateway Reflector Server is part
+ of the software system for the D-Star Network.
 
 Package: ambed
 Architecture: any
 Depends:
  ${shlibs:Depends},
  ${misc:Depends},
+ libftd2xx
 Description: AMBE Transcoding Server
- The AMBE Transcoding Server is part of the software system for the D-Star Network.
+ The AMBE Transcoding Server is part
+ of the software system for the D-Star Network.
+
+Package: xlxd-dashboard
+Architecture: any
+Depends:
+ ${shlibs:Depends},
+ ${misc:Depends},
+ xlxd,
+Description: Dashboard for XLX Server
+ Dashboard for the XLX Multiprotocol Gateway Reflector Server
+
+Package: xlxd-dashboard2
+Architecture: any
+Depends:
+ ${shlibs:Depends},
+ ${misc:Depends},
+ xlxd,
+Description: Alternative Dashboard for XLX Server
+ Alternative Dashboard for the XLX Multiprotocol Gateway Reflector Server

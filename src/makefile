@@ -6,7 +6,7 @@ EXECUTABLE=xlxd
 # variables for staged installation
 # directory variables - https://www.gnu.org/software/make/manual/html_node/Directory-Variables.html
 # DESTDIR - https://www.gnu.org/software/make/manual/html_node/DESTDIR.html
-# ComamndVariables - #https://www.gnu.org/software/make/manual/html_node/Command-Variables.html
+# CommandVariables - #https://www.gnu.org/software/make/manual/html_node/Command-Variables.html
 PREFIX?=/usr/local
 EXEC_PREFIX?=$(PREFIX)
 # by default install under /xlxd/ - it should be $(exec_dir)/sbin
@@ -15,6 +15,7 @@ SBIN_DIR?=$(EXEC_PREFIX)sbin
 # by default install config under /xlxd/ - it should be $(PREFIX)/etc
 #SYSCONF_DIR=/xlxd
 SYSCONF_DIR?=etc/xlxd
+SHARE_DIR?=$(EXEC_PREFIX)share
 INSTALL?=install
 INSTALL_PROGRAM?=$(INSTALL)
 INSTALL_DATA?=${INSTALL} -m 644
@@ -51,3 +52,6 @@ install:
 	[ -f $(DESTDIR)$(SYSCONF_DIR)/xlxd.transcoder ] && \
 		$(INSTALL_DATA) ../config/xlxd.transcoder  $(DESTDIR)$(SYSCONF_DIR)/xlxd.transcoder.sample || \
 		$(INSTALL_DATA) ../config/xlxd.transcoder  $(DESTDIR)$(SYSCONF_DIR)/xlxd.transcoder
+	$(INSTALL) -d $(DESTDIR)$(SHARE_DIR)
+	cp -a ../dashboard/. $(DESTDIR)$(SHARE_DIR)/xlxd-dashboard
+	cp -a ../dashboard2/. $(DESTDIR)$(SHARE_DIR)/xlxd-dashboard2
