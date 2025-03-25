@@ -17,7 +17,8 @@ SBIN_DIR?=$(EXEC_PREFIX)sbin
 SYSCONF_DIR?=etc/xlxd
 SHARE_DIR?=$(EXEC_PREFIX)share
 LOG_DIR?=/var/log/xlxd
-LOG_DIR?=/var/lib/xlxd
+VAR_DIR?=/var/lib/xlxd
+RUN_DIR?=/var/run/xlxd
 INSTALL?=install
 INSTALL_PROGRAM?=$(INSTALL)
 INSTALL_DATA?=${INSTALL} -m 644
@@ -39,6 +40,7 @@ install:
 	$(INSTALL) -d $(DESTDIR)$(SBIN_DIR)
 	$(INSTALL) -d $(DESTDIR)$(LOG_DIR)
 	$(INSTALL) -d $(DESTDIR)$(VAR_DIR)
+	$(INSTALL) -d $(DESTDIR)$(RUN_DIR)
 	$(INSTALL_PROGRAM) $(EXECUTABLE) $(DESTDIR)$(SBIN_DIR)/$(EXECUTABLE)
 	$(INSTALL) -d $(DESTDIR)$(SYSCONF_DIR)
 	[ -f $(DESTDIR)$(SYSCONF_DIR)/xlxd.blacklist ] && \
@@ -56,6 +58,9 @@ install:
 	[ -f $(DESTDIR)$(SYSCONF_DIR)/xlxd.transcoder ] && \
 		$(INSTALL_DATA) ../config/xlxd.transcoder  $(DESTDIR)$(SYSCONF_DIR)/xlxd.transcoder.sample || \
 		$(INSTALL_DATA) ../config/xlxd.transcoder  $(DESTDIR)$(SYSCONF_DIR)/xlxd.transcoder
+	[ -f $(DESTDIR)$(SYSCONF_DIR)/xlxd.config ] && \
+		$(INSTALL_DATA) ../config/xlxd.config  $(DESTDIR)$(SYSCONF_DIR)/xlxd.config.sample || \
+		$(INSTALL_DATA) ../config/xlxd.config  $(DESTDIR)$(SYSCONF_DIR)/xlxd.config
 	$(INSTALL) -d $(DESTDIR)$(SHARE_DIR)
 	cp -a ../dashboard/. $(DESTDIR)$(SHARE_DIR)/xlxd-dashboard
 	cp -a ../dashboard2/. $(DESTDIR)$(SHARE_DIR)/xlxd-dashboard2
