@@ -16,6 +16,8 @@ SBIN_DIR?=$(EXEC_PREFIX)sbin
 #SYSCONF_DIR=/xlxd
 SYSCONF_DIR?=etc/xlxd
 SHARE_DIR?=$(EXEC_PREFIX)share
+LOG_DIR?=/var/log/xlxd
+LOG_DIR?=/var/lib/xlxd
 INSTALL?=install
 INSTALL_PROGRAM?=$(INSTALL)
 INSTALL_DATA?=${INSTALL} -m 644
@@ -35,6 +37,8 @@ clean:
 .PHONY: install
 install:
 	$(INSTALL) -d $(DESTDIR)$(SBIN_DIR)
+	$(INSTALL) -d $(DESTDIR)$(LOG_DIR)
+	$(INSTALL) -d $(DESTDIR)$(VAR_DIR)
 	$(INSTALL_PROGRAM) $(EXECUTABLE) $(DESTDIR)$(SBIN_DIR)/$(EXECUTABLE)
 	$(INSTALL) -d $(DESTDIR)$(SYSCONF_DIR)
 	[ -f $(DESTDIR)$(SYSCONF_DIR)/xlxd.blacklist ] && \
@@ -55,3 +59,5 @@ install:
 	$(INSTALL) -d $(DESTDIR)$(SHARE_DIR)
 	cp -a ../dashboard/. $(DESTDIR)$(SHARE_DIR)/xlxd-dashboard
 	cp -a ../dashboard2/. $(DESTDIR)$(SHARE_DIR)/xlxd-dashboard2
+	$(INSTALL_PROGRAM) ../scripts/xlxapi-update $(DESTDIR)$(SBIN_DIR)/
+	$(INSTALL_PROGRAM) ../scripts/ambedwatchdog $(DESTDIR)$(SBIN_DIR)/

@@ -158,13 +158,13 @@
 // DMRid database -----------------------------------------------
 
 #define DMRIDDB_USE_RLX_SERVER          1                                   // 1 = use http, 0 = use local file
-#define DMRIDDB_PATH                    "/xlxd/dmrid.dat"                   // local file path
+#define DMRIDDB_PATH                    "/var/lib/xlxd/dmrid.dat"                   // local file path
 #define DMRIDDB_REFRESH_RATE            180                                 // in minutes
 
 // Wires-X node database ----------------------------------------
 
 #define YSFNODEDB_USE_RLX_SERVER        1                                   // 1 = use http, 0 = use local file
-#define YSFNODEDB_PATH                  "/xlxd/ysfnode.dat"                 // local file path
+#define YSFNODEDB_PATH                  "var/lib/xlxd/ysfnode.dat"                 // local file path
 #define YSFNODEDB_REFRESH_RATE          180                                 // in minutes
 
 // xml & json reporting -----------------------------------------
@@ -177,15 +177,15 @@
 // system paths -------------------------------------------------
 
 #ifndef CONFIG_PATH
-#define CONFIG_PATH                     "/xlxd/xlxd.config"
+#define CONFIG_PATH                     "/etc/xlxd/xlxd.config"
 #endif
-#define XML_PATH                        "/var/log/xlxd.xml"
-#define WHITELIST_PATH                  "/xlxd/xlxd.whitelist"
-#define BLACKLIST_PATH                  "/xlxd/xlxd.blacklist"
-#define INTERLINKLIST_PATH              "/xlxd/xlxd.interlink"
-#define TERMINALOPTIONS_PATH            "/xlxd/xlxd.terminal"
-#define TRANSCODEROPTIONS_PATH          "/xlxd/xlxd.transcoder"
-#define DEBUGDUMP_PATH                  "/var/log/xlxd.debug"
+#define XML_PATH                        "/var/log/xlxd/xlxd.xml"
+#define WHITELIST_PATH                  "/etc/xlxd/xlxd.whitelist"
+#define BLACKLIST_PATH                  "/etc/xlxd/xlxd.blacklist"
+#define INTERLINKLIST_PATH              "/etc/xlxd/xlxd.interlink"
+#define TERMINALOPTIONS_PATH            "/etc/xlxd/xlxd.terminal"
+#define TRANSCODEROPTIONS_PATH          "/etc/xlxd/xlxd.transcoder"
+#define DEBUGDUMP_PATH                  "/var/log/xlxd/xlxd.debug"
 
 // system constants ---------------------------------------------
 
