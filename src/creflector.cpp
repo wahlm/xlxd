@@ -141,6 +141,7 @@ bool CReflector::Start(void)
     else
     {
         m_Protocols.Close();
+        sd_notify(0, "ERRNO=92");
     }
     
     // done

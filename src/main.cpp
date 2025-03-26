@@ -29,6 +29,9 @@
 #include "syslog.h"
 #include <csignal>
 #include <sys/stat.h>
+#ifdef RUN_AS_DAEMON
+#include <systemd/sd-daemon.h>
+#endif
 
 
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -74,6 +77,25 @@ static int wait_for_termination()
 
 int main(int argc, const char * argv[])
 {
+    CConfig conf = CConfig();
+
+    // check arguments
+    if ( argc == 4 )
+    {
+        conf.SetCallsign(CCallsign(argv[1]));
+        conf.SetListenIp(CIp(argv[2]));
+        conf.SetTranscoderIp(CIp(argv[3]));
+    }
+    else if ( argc != 1 )
+    {
+        std::cout << "Usage: xlxd callsign xlxdip ambedip" << std::endl;
+        std::cout << "example: xlxd XLX999 192.168.178.212 127.0.0.1" << std::endl;
+
+        std::cout << "Startup parameters can also be defined in " << CONFIG_PATH << std::endl;
+
+        return 1;
+    }
+
 #ifdef RUN_AS_DAEMON
     
     // redirect cout, cerr and clog to syslog
@@ -92,6 +114,7 @@ int main(int argc, const char * argv[])
     // We got a good pid, Close the Parent Process
     if (pid > 0)
     {
+        sd_notifyf(0, "MAINPID=%lu", (unsigned long) pid);
         exit(EXIT_SUCCESS);
     }
     
@@ -118,25 +141,6 @@ int main(int argc, const char * argv[])
     close(STDERR_FILENO);
     
 #endif
-
-    CConfig conf = CConfig();
-
-    // check arguments
-    if ( argc == 4 )
-    {
-        conf.SetCallsign(CCallsign(argv[1]));
-        conf.SetListenIp(CIp(argv[2]));
-        conf.SetTranscoderIp(CIp(argv[3]));
-    }
-    else if ( argc != 1 )
-    {
-        std::cout << "Usage: xlxd callsign xlxdip ambedip" << std::endl;
-        std::cout << "example: xlxd XLX999 192.168.178.212 127.0.0.1" << std::endl;
-
-        std::cout << "Startup parameters can also be defined in " << CONFIG_PATH << std::endl;
-
-        return 1;
-    }
 
     // splash
     std::cout << "Starting xlxd " << VERSION_MAJOR << "." << VERSION_MINOR << "." << VERSION_REVISION << std::endl << std::endl;

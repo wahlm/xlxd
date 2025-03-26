@@ -28,6 +28,9 @@ configure)
 	    --quiet --system --group --no-create-home \
 	    --disabled-password --disabled-login \
 	    --home /run/xlxd xlxd
+	chown xlxd:xlxd /var/log/xlxd
+	chown xlxd:xlxd /var/run/xlxd
+	chown xlxd:xlxd /var/lib/xlxd
 	;;
 
 abort-upgrade|abort-remove|abort-deconfigure)
