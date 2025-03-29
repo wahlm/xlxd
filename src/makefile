@@ -15,6 +15,9 @@ SBIN_DIR?=$(EXEC_PREFIX)sbin
 # by default install config under /xlxd/ - it should be $(PREFIX)/etc
 #SYSCONF_DIR=/xlxd
 SYSCONF_DIR?=etc/xlxd
+SYSCONF_DB_DIR?=etc/xlxd-dashboard
+SYSCONF_DB2_DIR?=etc/xlxd-dashboard2
+SYSCONF_APACHE2_DIR?=etc/apache2/sites-available
 SHARE_DIR?=$(EXEC_PREFIX)share
 LOG_DIR?=/var/log/xlxd
 VAR_DIR?=/var/lib/xlxd
@@ -40,7 +43,6 @@ install:
 	$(INSTALL) -d $(DESTDIR)$(SBIN_DIR)
 	$(INSTALL) -d $(DESTDIR)$(LOG_DIR)
 	$(INSTALL) -d $(DESTDIR)$(VAR_DIR)
-	$(INSTALL) -d $(DESTDIR)$(RUN_DIR)
 	$(INSTALL_PROGRAM) $(EXECUTABLE) $(DESTDIR)$(SBIN_DIR)/$(EXECUTABLE)
 	$(INSTALL) -d $(DESTDIR)$(SYSCONF_DIR)
 	[ -f $(DESTDIR)$(SYSCONF_DIR)/xlxd.blacklist ] && \
@@ -62,7 +64,14 @@ install:
 		$(INSTALL_DATA) ../config/xlxd.config  $(DESTDIR)$(SYSCONF_DIR)/xlxd.config.sample || \
 		$(INSTALL_DATA) ../config/xlxd.config  $(DESTDIR)$(SYSCONF_DIR)/xlxd.config
 	$(INSTALL) -d $(DESTDIR)$(SHARE_DIR)
+	$(INSTALL) -d $(DESTDIR)$(SYSCONF_DB_DIR)
+	$(INSTALL) -d $(DESTDIR)$(SYSCONF_DB2_DIR)
+	$(INSTALL) -d $(DESTDIR)$(SYSCONF_APACHE2_DIR)
 	cp -a ../dashboard/. $(DESTDIR)$(SHARE_DIR)/xlxd-dashboard
+	mv $(DESTDIR)$(SHARE_DIR)/xlxd-dashboard/pgs/config.inc.php $(DESTDIR)$(SYSCONF_DB_DIR)
 	cp -a ../dashboard2/. $(DESTDIR)$(SHARE_DIR)/xlxd-dashboard2
+	mv $(DESTDIR)$(SHARE_DIR)/xlxd-dashboard2/pgs/config.inc.php $(DESTDIR)$(SYSCONF_DB2_DIR)
 	$(INSTALL_PROGRAM) ../scripts/xlxapi-update $(DESTDIR)$(SBIN_DIR)/
 	$(INSTALL_PROGRAM) ../scripts/ambedwatchdog $(DESTDIR)$(SBIN_DIR)/
+	$(INSTALL_PROGRAM) ../scripts/xlxd-dashboard.conf $(DESTDIR)$(SYSCONF_APACHE2_DIR)/
+	$(INSTALL_PROGRAM) ../scripts/xlxd-dashboard2.conf $(DESTDIR)$(SYSCONF_APACHE2_DIR)/

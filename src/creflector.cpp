@@ -418,7 +418,7 @@ void CReflector::RouterThread(CReflector *This, CPacketStream *streamIn)
 
 void CReflector::XmlReportThread(CReflector *This)
 {
-    const std::chrono::minutes timeout(XML_UPDATE_PERIOD);
+    const std::chrono::seconds timeout(XML_UPDATE_PERIOD);
     while ( !This->m_bStopThreads )
     {
         // report to xml file

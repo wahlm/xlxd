@@ -23,7 +23,7 @@ $PageOptions['PageRefreshActive']                    = true;		// Activate automa
 $PageOptions['PageRefreshDelay']                     = '10000';		// Page refresh time in miliseconds
 
 $PageOptions['NumberOfModules']                      = 10;		// Number of Modules enabled on reflector
-$PageOptions['TranscoderFile']                       = '/xlxd/xlxd.transcoder';			// Path to transcoder file
+$PageOptions['TranscoderFile']                       = '/etc/xlxd/xlxd.transcoder';			// Path to transcoder file
 
 $PageOptions['RepeatersPage'] = array();
 $PageOptions['RepeatersPage']['LimitTo']             = 99;		// Number of Repeaters to show
@@ -59,8 +59,8 @@ $PageOptions['DateFormat']                           = 'd.m.Y H:i';  // Date for
 $PageOptions['LastHeardTZ']                          = '';           // Arbitrary text after "Last Heard" column header
 
 
-$Service['PIDFile']                                  = '/var/log/xlxd.pid';
-$Service['XMLFile']                                  = '/var/log/xlxd.xml';
+$Service['PIDFile']                                  = '/dummy.pid';
+$Service['XMLFile']                                  = '/var/log/xlxd/xlxd.xml';
 
 $CallingHome['Active']                               = false;					// xlx phone home, true or false
 $CallingHome['MyDashBoardURL']                       = 'http://your_dashboard';			// dashboard url
@@ -71,20 +71,11 @@ $CallingHome['Comment']                              = "your_comment";				// Com
 $CallingHome['HashFile']                             = "/tmp/callinghome.php";			// Make sure the apache user has read and write permissions in this folder.
 $CallingHome['LastCallHomefile']                     = "/tmp/lastcallhome.php";			// lastcallhome.php can remain in the tmp folder 
 $CallingHome['OverrideIPAddress']                    = "";					// Insert your IP address here. Leave blank for autodetection. No need to enter a fake address.
-$CallingHome['InterlinkFile']                        = "/xlxd/xlxd.interlink";			// Path to interlink file
+$CallingHome['InterlinkFile']                        = "/etc/xlxd/xlxd.interlink";			// Path to interlink file
 
 $VNStat['Interfaces']                                = array();
 $VNStat['Interfaces'][0]['Name']                     = 'eth0';
 $VNStat['Interfaces'][0]['Address']                  = 'eth0';
 $VNStat['Binary']                                    = '/usr/bin/vnstat';
-
-/*   
-include an extra config file for people who dont like to mess with shipped config.ing.php   
-this makes updating dashboard from git a little bit easier   
-*/   
- 
-if (file_exists(__DIR__."/../config.inc.php")) {   
- require (__DIR__."/../config.inc.php");  
-}   
 
 ?>

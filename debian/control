@@ -37,6 +37,7 @@ Depends:
  ${shlibs:Depends},
  ${misc:Depends},
  xlxd,
+ libapache2-mod-php,
 Description: Dashboard for XLX Server
  Dashboard for the XLX Multiprotocol Gateway Reflector Server
 
@@ -46,6 +47,7 @@ Depends:
  ${shlibs:Depends},
  ${misc:Depends},
  xlxd,
+ libapache2-mod-php,
 Description: Alternative Dashboard for XLX Server
  Alternative Dashboard for the XLX Multiprotocol Gateway Reflector Server
 

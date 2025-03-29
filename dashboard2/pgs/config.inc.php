@@ -50,8 +50,8 @@ $PageOptions['MetaRobots']                           = 'index,follow';          
 
 $PageOptions['UserPage']['ShowFilter']               = true;                                                         // Show Filter on Users page
 
-$Service['PIDFile']                                  = '/var/log/xlxd.pid';
-$Service['XMLFile']                                  = '/var/log/xlxd.xml';
+$Service['PIDFile']                                  = '/dummy.pid';
+$Service['XMLFile']                                  = '/var/log/xlxd/xlxd.xml';
 
 $CallingHome['Active']                               = false;					               // xlx phone home, true or false
 $CallingHome['MyDashBoardURL']                       = 'http://your_dashboard';			       // dashboard url
@@ -61,16 +61,6 @@ $CallingHome['Country']                              = "your_country";          
 $CallingHome['Comment']                              = "your_comment"; 				           // Comment. Max 100 character
 $CallingHome['HashFile']                             = "/tmp/callinghome.php";                 // Make sure the apache user has read and write permissions in this folder.
 $CallingHome['OverrideIPAddress']                    = "";                                     // Insert your IP address here. Leave blank for autodetection. No need to enter a fake address.
-$CallingHome['InterlinkFile']                        = "/xlxd/xlxd.interlink";                 // Path to interlink file
-
-
-/*
-  include an extra config file for people who dont like to mess with shipped config.ing.php
-  this makes updating dashboard from git a little bit easier
-*/
-
-if (file_exists(__DIR__."/../config.inc.php")) {
-  include (__DIR__."/../config.inc.php");
-}
+$CallingHome['InterlinkFile']                        = "/etc/xlxd/xlxd.interlink";                 // Path to interlink file
 
 ?>
