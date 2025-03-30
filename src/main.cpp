@@ -85,6 +85,7 @@ int main(int argc, const char * argv[])
         conf.SetCallsign(CCallsign(argv[1]));
         conf.SetListenIp(CIp(argv[2]));
         conf.SetTranscoderIp(CIp(argv[3]));
+        conf.SetTranscoderListenIp(CIp(argv[2]));
     }
     else if ( argc != 1 )
     {
@@ -151,6 +152,7 @@ int main(int argc, const char * argv[])
     g_Reflector.SetCallsign(conf.GetCallsign());
     g_Reflector.SetListenIp(conf.GetListenIp());
     g_Reflector.SetTranscoderIp(conf.GetTranscoderIp());
+    g_Reflector.SetTranscoderListenIp(conf.GetTranscoderListenIp());
 
     // Block all signals while starting up the reflector -- we don't
     // want any of the worker threads handling them.

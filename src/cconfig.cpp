@@ -32,7 +32,8 @@
 CConfig::CConfig() :
     m_Callsign("N0CALL"),
     m_ListenIp(CIp("0.0.0.0")),
-    m_TranscoderIp(CIp("127.0.0.1"))
+    m_TranscoderIp(CIp("127.0.0.1")),
+    m_TranscoderListenIp(CIp("0.0.0.0"))
 {
     ReadOptions();
 }
@@ -44,6 +45,7 @@ void CConfig::DumpConfig()
     std::cout << "callsign " << GetCallsign() << std::endl;
     std::cout << "listen " << GetListenIp() << std::endl;
     std::cout << "transcoder " << GetTranscoderIp() << std::endl;
+    std::cout << "transcoderListen " << GetTranscoderListenIp() << std::endl;
     std::cout << std::endl;
 }
 
@@ -84,13 +86,18 @@ void CConfig::ReadOptions(void)
                         {
                             m_Callsign = CCallsign(szval);
                         }
-                        else if (strncmp(szt, "listen", 5) == 0)
+                        else if (strncmp(szt, "listen", 6) == 0)
                         {
                             m_ListenIp = CIp(szval);
+                            m_TranscoderListenIp = CIp(szval);
                         }
                         else if (strncmp(szt, "transcoder", 10) == 0)
                         {
                             m_TranscoderIp = CIp(szval);
+                        }
+                        else if (strncmp(szt, "transListen", 11) == 0)
+                        {
+                            m_TranscoderListenIp = CIp(szval);
                         }
                         else
                         {

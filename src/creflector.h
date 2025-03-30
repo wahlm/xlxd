@@ -61,9 +61,11 @@ public:
     const CCallsign &GetCallsign(void) const        { return m_Callsign; }
     void SetListenIp(const CIp &ip)                 { m_Ip = ip; UpdateListenMac(); }
     void SetTranscoderIp(const CIp &ip)             { m_AmbedIp = ip; }
+    void SetTranscoderListenIp(const CIp &ip)       { m_TranscoderListenIp = ip; }
     const CIp &GetListenIp(void) const              { return m_Ip; }
     const uint8 *GetListenMac(void) const           { return (const uint8 *)m_Mac; }
     const CIp &GetTranscoderIp(void) const          { return m_AmbedIp; }
+    const CIp &GetTranscoderListenIp(void) const    { return m_TranscoderListenIp; }
     
     // operation
     bool Start(void);
@@ -128,6 +130,7 @@ protected:
     CIp             m_Ip;
     uint8           m_Mac[6];
     CIp             m_AmbedIp;
+    CIp             m_TranscoderListenIp;
     
     // objects
     CUsers          m_Users;            // sorted list of lastheard stations

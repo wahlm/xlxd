@@ -44,11 +44,13 @@ public:
     const CCallsign &GetCallsign(void) const        { return m_Callsign; }
     const CIp &GetListenIp(void) const              { return m_ListenIp; }
     const CIp &GetTranscoderIp(void) const          { return m_TranscoderIp; }
+    const CIp &GetTranscoderListenIp(void) const    { return m_TranscoderListenIp; }
 
     // setters for bacward compatible CLI parameters
     void SetCallsign(const CCallsign &callsign)     { m_Callsign = callsign; }
     void SetListenIp(const CIp &ip)                 { m_ListenIp = ip; }
     void SetTranscoderIp(const CIp &ip)             { m_TranscoderIp = ip; }
+    void SetTranscoderListenIp(const CIp &ip)       { m_TranscoderListenIp = ip; }
 
 protected:
     // config
@@ -59,6 +61,7 @@ protected:
     CCallsign       m_Callsign;
     CIp             m_ListenIp;
     CIp             m_TranscoderIp;
+    CIp             m_TranscoderListenIp;
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////

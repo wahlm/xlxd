@@ -99,7 +99,7 @@ bool CCodecStream::Init(uint16 uiPort)
     m_uiPort = uiPort;
     
     // create our socket
-    ok = m_Socket.Open(uiPort);
+    ok = m_Socket.Open(uiPort, g_Reflector.GetTranscoderListenIp());
     if ( ok )
     {
         // init timers
@@ -111,7 +111,7 @@ bool CCodecStream::Init(uint16 uiPort)
     }
     else
     {
-        std::cout << "Error opening socket on port UDP" << uiPort << " on ip " << g_Reflector.GetListenIp() << std::endl;
+        std::cout << "Error opening socket on port UDP" << uiPort << " on ip " << g_Reflector.GetTranscoderListenIp() << std::endl;
         m_bConnected = false;
     }
     
