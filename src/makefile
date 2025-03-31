@@ -69,6 +69,7 @@ install:
 	$(INSTALL) -d $(DESTDIR)$(SYSCONF_APACHE2_DIR)
 	cp -a ../dashboard/. $(DESTDIR)$(SHARE_DIR)/xlxd-dashboard
 	mv $(DESTDIR)$(SHARE_DIR)/xlxd-dashboard/pgs/config.inc.php $(DESTDIR)$(SYSCONF_DB_DIR)
+	mv $(DESTDIR)$(SHARE_DIR)/xlxd-dashboard/css/layout.css $(DESTDIR)$(SYSCONF_DB_DIR)
 	cp -a ../dashboard2/. $(DESTDIR)$(SHARE_DIR)/xlxd-dashboard2
 	mv $(DESTDIR)$(SHARE_DIR)/xlxd-dashboard2/pgs/config.inc.php $(DESTDIR)$(SYSCONF_DB2_DIR)
 	$(INSTALL_PROGRAM) ../scripts/xlxapi-update $(DESTDIR)$(SBIN_DIR)/

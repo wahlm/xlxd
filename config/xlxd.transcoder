@@ -5,6 +5,7 @@
 #
 #  Valid options (case-sensitive):
 #  Address <ip>          - Ip address of the ambed server used for transcoding.
+#  ListenAddr <ip>       - Listen Ip address on xlxd server used for transcoding.
 #  ModulesOn <modules>   - A string with all modules which transcoding should be enabled,
 #                          "*" means all modules.
 #  ModulesAuto <modules> - A string with all modules which transcoding should be enabled
@@ -15,6 +16,6 @@
 #########################################################################################
 
 Address 127.0.0.1
-ListenAddress 0.0.0.0
+ListenAddr 0.0.0.0
 ModulesOn ABCD
 ModulesAuto *

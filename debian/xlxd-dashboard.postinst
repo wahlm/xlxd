@@ -22,6 +22,8 @@ case "$1" in
     configure)
         rm -f /usr/share/xlxd-dashboard/pgs/config.inc.php
         ln -s /etc/xlxd-dashboard/config.inc.php /usr/share/xlxd-dashboard/pgs/
+        rm -f /usr/share/xlxd-dashboard/css/layout.css
+        ln -s /etc/xlxd-dashboard/layout.css /usr/share/xlxd-dashboard/css/
     ;;
 
     abort-upgrade|abort-remove|abort-deconfigure)
