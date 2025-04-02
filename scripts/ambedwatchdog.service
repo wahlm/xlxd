@@ -4,4 +4,4 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/ambedwatchdog
+ExecStart=/usr/sbin/ambedwatchdog
