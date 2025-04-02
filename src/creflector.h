@@ -66,6 +66,8 @@ public:
     const uint8 *GetListenMac(void) const           { return (const uint8 *)m_Mac; }
     const CIp &GetTranscoderIp(void) const          { return m_AmbedIp; }
     const CIp &GetTranscoderListenIp(void) const    { return m_TranscoderListenIp; }
+    void SetDefaultModuleYSF(const char module)     { m_DefaultModuleYSF = module; }
+    const char GetDefaultModuleYSF(void) const      { return m_DefaultModuleYSF; }
     
     // operation
     bool Start(void);
@@ -131,6 +133,7 @@ protected:
     uint8           m_Mac[6];
     CIp             m_AmbedIp;
     CIp             m_TranscoderListenIp;
+    char            m_DefaultModuleYSF;
     
     // objects
     CUsers          m_Users;            // sorted list of lastheard stations

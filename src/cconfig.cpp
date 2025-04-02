@@ -33,7 +33,8 @@ CConfig::CConfig() :
     m_Callsign("N0CALL"),
     m_ListenIp(CIp("0.0.0.0")),
     m_TranscoderIp(CIp("127.0.0.1")),
-    m_TranscoderListenIp(CIp("0.0.0.0"))
+    m_TranscoderListenIp(CIp("0.0.0.0")),
+    m_DefaultModuleYSF(' ')
 {
     ReadOptions();
 }
@@ -46,6 +47,7 @@ void CConfig::DumpConfig()
     std::cout << "listen " << GetListenIp() << std::endl;
     std::cout << "transcoder " << GetTranscoderIp() << std::endl;
     std::cout << "transcoderListen " << GetTranscoderListenIp() << std::endl;
+    std::cout << "Default module YSF" << GetDefaultModuleYSF() << std::endl;
     std::cout << std::endl;
 }
 
@@ -98,6 +100,10 @@ void CConfig::ReadOptions(void)
                         else if (strncmp(szt, "transListen", 11) == 0)
                         {
                             m_TranscoderListenIp = CIp(szval);
+                        }
+                        else if (strncmp(szt, "moduleYSF", 9) == 0)
+                        {
+                            m_DefaultModuleYSF = *szval;
                         }
                         else
                         {

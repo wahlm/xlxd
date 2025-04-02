@@ -179,6 +179,12 @@ void CYsfProtocol::Task(void)
                     // aautolink, if enabled
                     #if YSF_AUTOLINK_ENABLE
                         newclient->SetReflectorModule(YSF_AUTOLINK_MODULE);
+                    #else
+                        const char module = g_Reflector.GetDefaultModuleYSF();
+                        if (( module >= 'A' ) && ( module <= 'Z' ))
+                        {
+                            newclient->SetReflectorModule(module);
+                        }
                     #endif
                     
                     // and append

@@ -40,6 +40,7 @@
 
 CReflector::CReflector()
 {
+    m_DefaultModuleYSF = ' ';
     m_bStopThreads = false;
     m_XmlReportThread = NULL;
     m_JsonReportThread = NULL;
@@ -58,6 +59,7 @@ CReflector::CReflector(const CCallsign &callsign)
 #ifdef DEBUG_DUMPFILE
     m_DebugFile.close();
 #endif
+    m_DefaultModuleYSF = ' ';
     m_bStopThreads = false;
     m_XmlReportThread = NULL;
     m_JsonReportThread = NULL;

@@ -153,6 +153,7 @@ int main(int argc, const char * argv[])
     g_Reflector.SetListenIp(conf.GetListenIp());
     g_Reflector.SetTranscoderIp(conf.GetTranscoderIp());
     g_Reflector.SetTranscoderListenIp(conf.GetTranscoderListenIp());
+    g_Reflector.SetDefaultModuleYSF(conf.GetDefaultModuleYSF());
 
     // Block all signals while starting up the reflector -- we don't
     // want any of the worker threads handling them.
