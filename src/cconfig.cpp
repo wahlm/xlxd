@@ -47,7 +47,7 @@ void CConfig::DumpConfig()
     std::cout << "listen " << GetListenIp() << std::endl;
     std::cout << "transcoder " << GetTranscoderIp() << std::endl;
     std::cout << "transcoderListen " << GetTranscoderListenIp() << std::endl;
-    std::cout << "Default module YSF" << GetDefaultModuleYSF() << std::endl;
+    std::cout << "Default module YSF " << GetDefaultModuleYSF() << std::endl;
     std::cout << std::endl;
 }
 
