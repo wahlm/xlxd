@@ -10,6 +10,7 @@ Group=root
 EnvironmentFile=-/etc/default/ambed
 ExecStartPre=-/sbin/rmmod ftdi_sio
 ExecStartPre=-/sbin/rmmod usb_serial
+ExecStartPre=-/sbin/rmmod usbserial
 ExecStart=/usr/sbin/ambed $AMBED_IP
 Restart=on-abnormal
 

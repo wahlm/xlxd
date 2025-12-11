@@ -105,8 +105,10 @@ int CUdpSocket::Receive(CBuffer *Buffer, CIp *Ip, int timeout)
         // control socket
         FD_ZERO(&FdSet);
         FD_SET(m_Socket, &FdSet);
-        tv.tv_sec = timeout / 1000;
-        tv.tv_usec = (timeout % 1000) * 1000;
+        // tv.tv_sec = timeout / 1000;
+        // tv.tv_usec = (timeout % 1000) * 1000;
+        tv.tv_sec = timeout;
+        tv.tv_usec = 0;
         select(m_Socket + 1, &FdSet, 0, 0, &tv);
         
         // allocate buffer
